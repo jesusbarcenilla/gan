@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import addresses from './addresses.json';
 
-type City = {
+// TODO move to independent file.
+export type City = {
   guid: string;
   isActive: boolean;
   address: string;
