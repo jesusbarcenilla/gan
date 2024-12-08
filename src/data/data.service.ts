@@ -12,7 +12,20 @@ type City = {
 
 @Injectable()
 export class DataService {
+  private cities = addresses as City[];
+  private mapByGuid: Record<string, City>;
   public getAllCities(): City[] {
-    return addresses as City[];
+    return this.cities;
+  }
+
+  public getCityByGuid(guid: string): City {
+    return this.mapByGuid[guid];
+  }
+
+  constructor() {
+    this.mapByGuid = this.cities.reduce((m, v) => {
+      m[v.guid] = v;
+      return m;
+    }, {});
   }
 }
